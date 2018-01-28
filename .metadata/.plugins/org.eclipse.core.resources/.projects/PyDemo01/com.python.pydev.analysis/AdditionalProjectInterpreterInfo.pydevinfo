@@ -1,0 +1,31 @@
+-- VERSION_4
+-- START DISKCACHE_2
+D:\BigDataWorkSpace\.metadata\.plugins\org.eclipse.core.resources\.projects\PyDemo01\com.python.pydev.analysis\v2_indexcache
+cn.tarena.py.Demo02|1500621903551406000|D:\BigDataWorkSpace\PyDemo01\src\cn\tarena\py\Demo02.py
+cn.tarena.py.Demo01|1500621919381312000|D:\BigDataWorkSpace\PyDemo01\src\cn\tarena\py\Demo01.py
+cn.__init__|1500604034592360000|D:\BigDataWorkSpace\PyDemo01\src\cn\__init__.py
+cn.tarena.__init__|1500604034603361000|D:\BigDataWorkSpace\PyDemo01\src\cn\tarena\__init__.py
+cn.tarena.py.__init__|1500604034612361000|D:\BigDataWorkSpace\PyDemo01\src\cn\tarena\py\__init__.py
+cn.tarena.py.Person|1500622094831347000|D:\BigDataWorkSpace\PyDemo01\src\cn\tarena\py\Person.py
+-- END DISKCACHE
+-- START DICTIONARY
+4
+1=cn.tarena.py.Demo02
+4=Person.__init__
+2=cn.tarena.py.Person
+3=Person
+-- END DICTIONARY
+-- START TREE 1
+4
+num|0|
+p|1|p!11@
+per|1|Person!17@
+sum|0|
+-- END TREE
+-- START TREE 2
+4
+__i|1|__init__!3&18@
+_in|0|
+eat|1|eat!3&18@
+nam|1|name!4&19@
+-- END TREE

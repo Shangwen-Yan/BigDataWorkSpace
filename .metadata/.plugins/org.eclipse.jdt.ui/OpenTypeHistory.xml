@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+<typeInfo handle="=1702HDFS/D:\/hadoop-2.7.1\/share\/hadoop\/common\/hadoop-common-2.7.1.jar&lt;org.apache.hadoop.io(NullWritable.class[NullWritable" modifiers="33" timestamp="1435558546000"/>
+<typeInfo handle="=1702HDFS/D:\/hadoop-2.7.1\/share\/hadoop\/mapreduce\/hadoop-mapreduce-client-core-2.7.1.jar&lt;org.apache.hadoop.mapred(MapTask.class[MapTask" modifiers="33" timestamp="1435558547000"/>
+<typeInfo handle="=StormDemo/lib\/storm-core-0.9.3.jar&lt;backtype.storm.topology(IComponent.class[IComponent" modifiers="1537" timestamp="1499225631452"/>
+<typeInfo handle="=StormDemo/lib\/storm-core-0.9.3.jar&lt;backtype.storm.spout(ISpout.class[ISpout" modifiers="1537" timestamp="1499225631452"/>
+<typeInfo handle="=StormDemo/lib\/storm-core-0.9.3.jar&lt;backtype.storm.topology.base(BaseRichBolt.class[BaseRichBolt" modifiers="1057" timestamp="1499225631452"/>
+</typeInfoHistroy>

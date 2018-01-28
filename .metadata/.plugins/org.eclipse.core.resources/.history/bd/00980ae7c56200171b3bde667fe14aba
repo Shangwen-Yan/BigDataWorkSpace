@@ -1,0 +1,5 @@
+package cn.tarena.storm.transaction;
+
+public class SentenceEmitter {
+
+}

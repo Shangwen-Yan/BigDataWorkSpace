@@ -1,0 +1,31 @@
+package cn.tarena.storm.transaction;
+
+import java.util.Map;
+
+import backtype.storm.task.TopologyContext;
+import backtype.storm.topology.OutputFieldsDeclarer;
+import backtype.storm.topology.base.BaseTransactionalSpout;
+import backtype.storm.tuple.Fields;
+
+public class TransSentenceSpout extends BaseTransactionalSpout<Object>{
+
+	@Override
+	public backtype.storm.transactional.ITransactionalSpout.Coordinator<Object> getCoordinator(Map arg0,
+			TopologyContext arg1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public backtype.storm.transactional.ITransactionalSpout.Emitter<Object> getEmitter(Map arg0, TopologyContext arg1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void declareOutputFields(OutputFieldsDeclarer declarer) {
+		declarer.declare(new Fields("txid","sentence"));
+		
+	}
+
+}

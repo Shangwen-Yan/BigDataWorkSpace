@@ -1,0 +1,62 @@
+package cn.tedu.storm.transactionwc;
+
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
+import backtype.storm.coordination.BatchOutputCollector;
+import backtype.storm.task.TopologyContext;
+import backtype.storm.topology.OutputFieldsDeclarer;
+import backtype.storm.topology.base.BaseBatchBolt;
+import backtype.storm.transactional.TransactionAttempt;
+import backtype.storm.tuple.Fields;
+import backtype.storm.tuple.Tuple;
+import backtype.storm.tuple.Values;
+
+public class TransWordCountBolt extends BaseBatchBolt<TransactionAttempt>{
+	private static Map<String,Integer> map = new ConcurrentHashMap<>();
+	private BatchOutputCollector collector = null;
+	private TransactionAttempt id = null;
+	@Override
+	public void prepare(Map conf, TopologyContext context, BatchOutputCollector collector, TransactionAttempt id) {
+		this.collector = collector;
+		this.id = id;
+	}
+	private Map<String, Integer> subMap = new ConcurrentHashMap<>();
+	// 这个批中每个tuple都进入execute方法
+	@Override
+	public void execute(Tuple tuple) {
+		// 从tuple中获取单词
+		String word = tuple.getStringByField("word");
+		// 存入临时map
+		subMap.put(word, subMap.containsKey(word) ? subMap.get(word) + 1 : 1);
+	}
+	// 当批中所有的tuple都处理完时
+	// 此时subMap中已经保存了这个批中所有tuple里切出的单词
+	private static int lastTransId = -1;
+	@Override
+	public void finishBatch() {
+		if (id.getTransactionId().intValue() <= lastTransId) {
+			// 当前批的编号小于等于最后一次处理批的编号，说明这是重发且之前处理过的数据，应该抛弃
+			return;
+		}
+		// 当前批是普通批，正常处理，最后将lastTransId更新为最后处理的编号即可
+		// 遍历这些单词
+		for(Map.Entry<String, Integer> entry : subMap.entrySet()){
+			// 加入总的map中
+			String word = entry.getKey();
+			int count = entry.getValue();
+			map.put(word, map.containsKey(word) ? map.get(word) + 1 : 1);
+			// 向后发送消息，表明单词数量变更
+			collector.emit(new Values(id,word,map.get(word)));
+		}
+		// 更新lastTransId
+		lastTransId = id.getTransactionId().intValue();
+	}
+
+	@Override
+	public void declareOutputFields(OutputFieldsDeclarer declarer) {
+		declarer.declare(new Fields("txid","word","count"));
+	}
+
+
+}

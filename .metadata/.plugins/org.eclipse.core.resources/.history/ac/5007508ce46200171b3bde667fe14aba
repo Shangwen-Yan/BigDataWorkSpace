@@ -1,0 +1,34 @@
+package cn.tarena.storm.transaction;
+
+import backtype.storm.Config;
+import backtype.storm.LocalCluster;
+import backtype.storm.generated.StormTopology;
+import backtype.storm.transactional.TransactionalTopologyBuilder;
+import backtype.storm.tuple.Fields;
+
+public class TransSentenceTopology {
+	public static void main(String[] args) throws InterruptedException {
+		// 1.创建组件对象
+		TransactionSpout spout = new TransactionSpout();
+		TransSplitSentenceBolt splitBolt = new TransSplitSentenceBolt();
+		TransWordCountBolt wcBolt = new TransWordCountBolt();
+		TransReportBolt reportBolt = new TransReportBolt();
+		
+		// 2.创建构建者
+		TransactionalTopologyBuilder builder = new TransactionalTopologyBuilder("Trans_Wc_Topology", "Trans_Sentence_Spout", spout);
+		builder.setBolt("Trans_Split_Sentence_Bolt", splitBolt).shuffleGrouping("Trans_Sentence_Spout");
+		builder.setCommitterBolt("Trans_Word_Count_Bolt", wcBolt).fieldsGrouping("Trans_Split_Sentence_Bolt", new Fields("txid", "sentence"));
+		builder.setBolt("Trans_Report_Bolt", splitBolt).globalGrouping("Trans_Word_Count_Bolt");
+	
+		StormTopology topo = builder.buildTopology();
+		
+		LocalCluster cluster = new LocalCluster();
+		Config conf = new Config();
+		cluster.submitTopology("Trans_Wc_Topology", conf, topo);
+		
+		Thread.sleep(1000 * 10);
+		cluster.killTopology("Trans_Wc_Topology");
+		cluster.shutdown();
+	}
+
+}

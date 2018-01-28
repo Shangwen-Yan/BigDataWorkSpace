@@ -1,0 +1,12 @@
+#coding=utf-8
+'''
+Created on 2017Äê7ÔÂ21ÈÕ
+
+@author: CGB-yz
+'''
+class Person:
+    'comment'
+    def _init_(self):
+        print("init method")
+    def eat(self,food):
+        print("chi"+food);

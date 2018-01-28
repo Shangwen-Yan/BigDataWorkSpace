@@ -1,0 +1,62 @@
+package cn.tedu.storm.transaction.wc;
+
+import java.math.BigInteger;
+
+import backtype.storm.transactional.ITransactionalSpout.Coordinator;
+
+
+public class SentenceCoordinator implements Coordinator<SentenceMetaData> {
+
+	//--批的最大大小
+	private static int batchSize = 3;
+	
+	//--最后处理的数据索引
+	private static int index = 0;
+	
+	/**
+	 * 当isReady返回true后 这个方法将会被调用
+	 * 传入上下文为当前批准备的的独一无二的编号 和上一个批的信息对象
+	 * 要求组织当前事务批的信息进行返回
+	 * 这个方法返回的批的信息 将会被传递给Emitter对象 真正组织数据进行发送
+	 */
+	@Override
+	public SentenceMetaData initializeTransaction(BigInteger txid, SentenceMetaData prevMetadata) {
+		int beginIndex = 0;
+		int endIndex = 0;
+		if(prevMetadata == null){
+			//第一个批
+			beginIndex = 0;
+			endIndex = beginIndex + batchSize > SentenceDB.sentences.length ? SentenceDB.sentences.length : beginIndex + batchSize;
+		}else{
+			//不是第一个批
+			beginIndex = prevMetadata.getEndIndex();
+			endIndex = beginIndex + batchSize > SentenceDB.sentences.length ? SentenceDB.sentences.length : beginIndex + batchSize;
+		}
+		index = endIndex;
+		return new SentenceMetaData(beginIndex, endIndex);
+	}
+
+	/**
+	 * 由上下文调用 用来询问是否准备好发送一个新的批 开始一个新的事务
+	 * 如果准备好发送一个新的批 可以返回true
+	 * 如果没有准备好返回false
+	 * 如果准备发送一个新的批 但是需要过会再发 则可以在这个方法中睡眠一小段时间 然后返回ture
+	 * 这个方法会在上下文的一个简单循环中不停的调用
+	 */
+	
+	
+	@Override
+	public boolean isReady() {
+		return index < SentenceDB.sentences.length;
+	}
+
+	/**
+	 * 关闭当前coordinator之前调用的方法 用来善后
+	 * 可以执行一些释放资源之类的操作
+	 */
+	@Override
+	public void close() {
+		
+	}
+
+}

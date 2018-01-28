@@ -1,0 +1,11 @@
+127.0.0.1 - - [10/Jul/2017:19:50:03 +0800] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [10/Jul/2017:19:50:12 +0800] "GET /demo/a.jsp HTTP/1.1" 200 309
+0:0:0:0:0:0:0:1 - - [10/Jul/2017:19:50:13 +0800] "GET /demo/js/tongji.js HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [10/Jul/2017:19:50:59 +0800] "GET /demo/a.jsp HTTP/1.1" 200 309
+0:0:0:0:0:0:0:1 - - [10/Jul/2017:19:51:44 +0800] "GET /demo/a.jsp HTTP/1.1" 200 309
+0:0:0:0:0:0:0:1 - - [10/Jul/2017:19:51:44 +0800] "GET /demo/js/tongji.js HTTP/1.1" 200 8823
+0:0:0:0:0:0:0:1 - - [10/Jul/2017:19:52:04 +0800] "GET /demo/servlet/LogServlet?url=http://localhost:8090/demo/a.jsp&urlname=a.jsp&title=%E9%A1%B5%E9%9D%A2A&chset=UTF-8&scr=1920x1080&col=24-bit&lg=zh-cn&je=0&ce=1&fv=24.0%20r0&cnv=0.33996975170932453&ref=&uagent=Mozilla/5.0%20(Windows%20NT%206.1;%20WOW64)%20AppleWebKit/537.36%20(KHTML,%20like%20Gecko)%20Chrome/58.0.3029.81%20Safari/537.36&stat_uv=90762766353861841766&stat_ss=8980603870_0_1499687504608 HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2017:19:55:53 +0800] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [10/Jul/2017:19:56:13 +0800] "GET /demo/a.jsp HTTP/1.1" 200 309
+0:0:0:0:0:0:0:1 - - [10/Jul/2017:19:56:13 +0800] "GET /demo/js/tongji.js HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [10/Jul/2017:19:56:33 +0800] "GET /demo/servlet/LogServlet?url=http://localhost:8090/demo/a.jsp&urlname=a.jsp&title=%E9%A1%B5%E9%9D%A2A&chset=UTF-8&scr=1920x1080&col=24-bit&lg=zh-cn&je=0&ce=1&fv=24.0%20r0&cnv=0.6704770944257348&ref=&uagent=Mozilla/5.0%20(Windows%20NT%206.1;%20WOW64)%20AppleWebKit/537.36%20(KHTML,%20like%20Gecko)%20Chrome/58.0.3029.81%20Safari/537.36&stat_uv=90762766353861841766&stat_ss=4950603401_0_1499687773025 HTTP/1.1" 200 -

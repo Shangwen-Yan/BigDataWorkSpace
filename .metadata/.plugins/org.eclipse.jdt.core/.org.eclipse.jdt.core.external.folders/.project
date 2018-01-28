@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>.org.eclipse.jdt.core.external.folders</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>.link0</name>
+			<type>2</type>
+			<location>C:/Users/CGB-yz/Desktop/【达内】/【大数据】/zebra/zebra第五天/Hadoop第一天课前资料/hadoop插件+Eclipse+源码/hadoop源码/hadoop-2.4.0-src</location>
+		</link>
+		<link>
+			<name>.link1</name>
+			<type>2</type>
+			<location>C:/Users/CGB-yz/Desktop/【达内】/【大数据】/3.【zebra】/zebra第五天/Hadoop第一天课前资料/hadoop插件+Eclipse+源码/hadoop源码/hadoop-2.4.0-src</location>
+		</link>
+		<link>
+			<name>.link3</name>
+			<type>2</type>
+			<location>C:/Users/CGB-yz/Desktop/【达内】/【大数据】/7.【HBase】/hbase/资源/hbase-0.98.23-src/hbase-0.98.23</location>
+		</link>
+		<link>
+			<name>.link4</name>
+			<type>2</type>
+			<location>C:/Users/CGB-yz/Desktop/【达内】/【大数据】/7.【HBase】/hbase_phoenix_kafka/预习/storm/安装包/apache-storm-0.9.3-src</location>
+		</link>
+	</linkedResources>
+</projectDescription>

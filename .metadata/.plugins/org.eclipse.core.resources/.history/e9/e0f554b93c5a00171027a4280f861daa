@@ -1,0 +1,24 @@
+package cn.tarena.season;
+
+import java.io.IOException;
+
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.lib.output.MultipleOutputs;
+
+public class SeasonReducer extends Reducer<IntWritable, IntWritable, IntWritable, IntWritable>{
+	private MultipleOutputs<Text, Text> mos;
+	@Override
+	protected void reduce(IntWritable key, Iterable<IntWritable> values, Reducer<IntWritable, IntWritable, IntWritable, IntWritable>.Context context)
+			throws IOException, InterruptedException {
+		int profit=0;
+		for(IntWritable value:values){
+			profit+=value.get();
+			System.out.println("key"+key);
+		}
+		
+		context.write(key, new IntWritable(profit));
+	}
+
+}

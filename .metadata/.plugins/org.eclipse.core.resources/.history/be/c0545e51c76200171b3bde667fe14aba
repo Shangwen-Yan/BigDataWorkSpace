@@ -1,0 +1,29 @@
+package cn.tarena.storm.transaction;
+
+import java.math.BigInteger;
+
+import backtype.storm.coordination.BatchOutputCollector;
+import backtype.storm.transactional.ITransactionalSpout.Emitter;
+import backtype.storm.transactional.TransactionAttempt;
+
+public class SentenceEmitter implements Emitter<SentenceMetaData>{
+
+	@Override
+	public void emitBatch(TransactionAttempt tx, SentenceMetaData coordinatorMeta, BatchOutputCollector collector) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void cleanupBefore(BigInteger txid) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void close() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

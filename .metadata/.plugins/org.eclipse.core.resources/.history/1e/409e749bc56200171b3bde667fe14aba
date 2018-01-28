@@ -1,0 +1,28 @@
+package cn.tarena.storm.transaction;
+
+import java.math.BigInteger;
+
+import backtype.storm.transactional.ITransactionalSpout.Coordinator;
+
+public class SentenceCordinator implements Coordinator<Object> {
+	
+	
+	@Override
+	public Object initializeTransaction(BigInteger txid, Object prevMetadata) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isReady() {
+		return SentenceDB.index < SentenceDB.sentences.length;
+		
+	}
+
+	@Override
+	public void close() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

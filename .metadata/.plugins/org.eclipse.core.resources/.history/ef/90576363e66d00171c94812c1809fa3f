@@ -1,0 +1,14 @@
+#coding=utf-8
+
+'''
+Created on 2017��7��21��
+
+@author: CGB-yz
+'''
+from cn.tarena.py.Person import Person
+
+print (Person.__doc__)
+p=Person()
+p.eat("cholo")
+
+

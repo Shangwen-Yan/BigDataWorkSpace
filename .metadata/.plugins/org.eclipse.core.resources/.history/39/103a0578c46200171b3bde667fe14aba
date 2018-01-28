@@ -1,0 +1,20 @@
+package cn.tarena.storm.transaction;
+
+public class SentenceDB {
+	public static String[] sentences = {
+			"my name is park",
+			"i am so shuai",
+			"do you like me",
+			"are you sure you do not like me",
+			"ok i am sure",
+			"how are you",
+			"fine thank you and you",
+			"i am ok"
+			
+	};
+	public static int index;
+	private SentenceDB(){
+		
+	}
+
+}

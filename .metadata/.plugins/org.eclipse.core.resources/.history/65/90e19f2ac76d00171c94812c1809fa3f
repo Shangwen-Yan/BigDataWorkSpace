@@ -1,0 +1,16 @@
+#coding=utf-8
+
+'''
+Created on 2017��7��21��
+
+@author: CGB-yz
+'''
+from _ast import Num
+sum=0
+num=1
+while num<=10:
+    sum+=num
+    num++
+else:
+    print("this else")
+print("end")

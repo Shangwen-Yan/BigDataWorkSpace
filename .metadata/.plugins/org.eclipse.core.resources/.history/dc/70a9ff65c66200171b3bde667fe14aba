@@ -1,0 +1,36 @@
+package cn.tarena.storm.transaction;
+
+import java.math.BigInteger;
+
+import backtype.storm.transactional.ITransactionalSpout.Coordinator;
+
+public class SentenceCordinator implements Coordinator<SentenceMetaData> {
+	private static int  batchSize = 3;
+	
+	@Override
+	public SentenceMetaData initializeTransaction(BigInteger txid, SentenceMetaData prevMetadata) {
+		int beginIndex = 0;
+		int endIndex = 0;
+		if(prevMetadata==null){
+			endIndex=(beginIndex +batchSize )> SentenceDB.sentences.length?SentenceDB.sentences.length:beginIndex+batchSize; //º¬Í·²»º¬Î²
+		}else {
+			beginIndex=prevMetadata.getEndIndex();
+			endIndex = (beginIndex +batchSize )> SentenceDB.sentences.length?SentenceDB.sentences.length:beginIndex+batchSize; 
+		}
+		return null;
+	}
+
+	private static int index = 0;
+	@Override
+	public boolean isReady() {
+		return index < SentenceDB.sentences.length;
+		
+	}
+
+	@Override
+	public void close() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
